@@ -6,40 +6,204 @@
     <link rel="stylesheet" href="css/default.css">
 </head>
 <body>
-<header class="weatherHere">
+<header class="weather-header">
     <h1 class="title">Погода здесь</h1>
-    <button class="renew" type="button" name="renewLocation">Обновить геолокацию</button>
-    <button class="renew-image"></button>
+    <button class="update-btn" type="button" name="renewLocation">Обновить геолокацию</button>
+    <button class="update-btn-image"></button>
 </header>
-<main class="main">
+<main class="container">
     <section class="main-info">
-        <div class="main-city">
-            <h2>Saint-Petersburg</h2>
+            <h2 class="main-city-name">Saint-Petersburg</h2>
             <div class="main-weather">
                 <img src="" class="main-weather-img" alt="sun">
-                <p class="mainTemp">8°C</p>
-            </div>
+                <p class="main-temp">8°C</p>
+
         </div>
+        
         <ul class="info">
             <li class="option">
                 <h4>Ветер</h4>
                 <p>No wind</p>
             </li>
+            
             <li class="option">
                 <h4>Облачность</h4>
                 <p>No clouds</p>
             </li>
+            
             <li class="option">
                 <h4>Давление</h4>
                 <p>1012 hpa</p>
             </li>
+            
             <li class="option">
                 <h4>Влажность</h4>
                 <p>52%</p>
             </li>
+            
             <li class="option">
                 <h4>Координаты</h4>
                 <p>[59.88, 30.42]</p>
+            </li>
+        </ul>
+        
+    </section>
+    
+    <section class="favourite">
+        <div class="fav-city">
+            <h2>Избранное</h2>
+            <div class="add-city">
+                <label>
+                    <input class="input-city" type="text" placeholder="Добавить новый город">
+                </label>
+                <button type="button" name="button" class="btn"></button>
+            </div>
+        </div>
+
+        <ul class="cities">
+
+            <li class="city">
+                <div class="cityWeather">
+                    <h3>Moscow</h3>
+                    <p class="temp">-8°C</p>
+                    <img class="picture" src="" alt="sun"/>
+                    <button class="btn"></button>
+                </div>
+
+                <ul class="info">
+                    <li class="option">
+                        <h4>Ветер</h4>
+                        <p>Hard breeze</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Облачность</h4>
+                        <p>Broken clouds</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Давление</h4>
+                        <p>1012 hpa</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Влажность</h4>
+                        <p>100%</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Координаты</h4>
+                        <p>[34.88, 90.42]</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="city">
+                <div class="cityWeather">
+                    <h3>Helsinki</h3>
+                    <p class="temp">26°C</p>
+                    <img class="picture" alt="cloud" src=""/>
+                    <button class="btn"></button>
+                </div>
+
+                <ul class="info">
+                    <li class="option">
+                        <h4>Ветер</h4>
+                        <p>Light breeze</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Облачность</h4>
+                        <p>Sunny</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Давление</h4>
+                        <p>1012 hpa</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Влажность</h4>
+                        <p>80%</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Координаты</h4>
+                        <p>[67.88, 92.42]</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="city">
+                <div class="cityWeather">
+                    <h3>Berlin</h3>
+                    <p class="temp">66°C</p>
+                    <img class="picture" alt="cloud" src=""/>
+                    <button class="btn"></button>
+                </div>
+
+                <ul class="info">
+                    <li class="option">
+                        <h4>Ветер</h4>
+                        <p>Mederate breeze</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Облачность</h4>
+                        <p>Rain</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Давление</h4>
+                        <p>1012 hpa</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Влажность</h4>
+                        <p>80%</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Координаты</h4>
+                        <p>[67.88, 92.42]</p>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="city">
+                <div class="cityWeather">
+                    <h3>Paris</h3>
+                    <p class="temp">23°C</p>
+                    <img class="picture" alt="cloud" src=""/>
+                    <button class="btn"></button>
+                </div>
+
+                <ul class="info">
+                    <li class="option">
+                        <h4>Ветер</h4>
+                        <p>Storm</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Облачность</h4>
+                        <p>Very cloudy</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Давление</h4>
+                        <p>2000 hpa</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Влажность</h4>
+                        <p>90%</p>
+                    </li>
+
+                    <li class="option">
+                        <h4>Координаты</h4>
+                        <p>[56.67, 32.09]</p>
+                    </li>
+                </ul>
             </li>
         </ul>
     </section>
