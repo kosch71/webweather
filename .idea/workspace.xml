@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6382705-f190-4609-b267-91fe03f8a95a" name="Default Changelist" comment="" />
+    <list default="true" id="e6382705-f190-4609-b267-91fe03f8a95a" name="Default Changelist" comment="## 1st Lab 2020 ITMO&#10;- Adding first files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
+    <list id="a656620d-86cb-47af-98cd-0593353777e9" name="1Lab" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -17,8 +52,16 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -26,26 +69,82 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e6382705-f190-4609-b267-91fe03f8a95a" name="Default Changelist" comment="" />
+      <changelist id="a656620d-86cb-47af-98cd-0593353777e9" name="1Lab" comment="" />
       <created>1601129305830</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601129305830</updated>
-      <workItem from="1601129306931" duration="347000" />
+      <workItem from="1601129306931" duration="2971000" />
     </task>
+    <task id="LOCAL-00001" summary="## 1st Lab 2020 ITMO&#10;- Adding first files">
+      <created>1601129855103</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601129855103</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="## 1st Lab 2020 ITMO&#10;- Adding first files" />
+    <option name="LAST_COMMIT_MESSAGE" value="## 1st Lab 2020 ITMO&#10;- Adding first files" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="578" y="339" key="Github.ShareDialog" timestamp="1601129565087">
+    <state x="306" y="33" key="CommitChangelistDialog2" timestamp="1601286778078">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="306" y="33" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1601286778078" />
+    <state x="578" y="339" key="Github.ShareDialog" timestamp="1601129729423">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state x="578" y="339" key="Github.ShareDialog/0.23.1440.824@0.23.1440.824" timestamp="1601129565087" />
-    <state x="221" y="74" key="SettingsEditor" timestamp="1601129496613">
+    <state x="578" y="339" key="Github.ShareDialog/0.23.1440.824@0.23.1440.824" timestamp="1601129729423" />
+    <state x="434" y="136" key="Github.UntrackedFilesDialog" timestamp="1601129738394">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state x="221" y="74" key="SettingsEditor/0.23.1440.824@0.23.1440.824" timestamp="1601129496613" />
+    <state x="434" y="136" key="Github.UntrackedFilesDialog/0.23.1440.824@0.23.1440.824" timestamp="1601129738394" />
+    <state x="221" y="74" key="SettingsEditor" timestamp="1601129715436">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state x="221" y="74" key="SettingsEditor/0.23.1440.824@0.23.1440.824" timestamp="1601129715436" />
+    <state x="558" y="326" width="325" height="247" key="VCS.EditChangelistDialog" timestamp="1601286917101">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="558" y="326" width="325" height="247" key="VCS.EditChangelistDialog/0.0.1440.900@0.0.1440.900" timestamp="1601286917101" />
+    <state x="494" y="160" key="Vcs.Push.Dialog.v2" timestamp="1601129858739">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state x="494" y="160" key="Vcs.Push.Dialog.v2/0.23.1440.824@0.23.1440.824" timestamp="1601129858739" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1601286671865">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.824@0.23.1440.824" timestamp="1601286671865" />
     <state x="486" y="128" key="svn.repositoryBrowser" timestamp="1601129398721">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
