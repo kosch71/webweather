@@ -5,9 +5,11 @@
 }
 
 .weather-header{
-    margin: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     display: grid;
     grid-template-columns: 1fr 25% 1fr;
+    grid-template-areas: "title update none"
 }
 
 .title{
@@ -22,7 +24,7 @@
 
 .main-city{
     margin: 0 0 8%;
-    font-size: 2.4em;
+    font-size: 3em;
     font-weight: bold;
 }
 
@@ -31,11 +33,17 @@
 }
 
 .update-btn {
-    background-color: #ACC1CE;
-    color: #5A7789;
+    width: 100%;
+    height: 100%;
+    background-color: #c9d2d7;
+    font-size: 1.3vw;
+    color: inherit;
+    border: 0;
     border-radius: 5px;
-    border: none;
-    font-size: 1.2em;
+}
+
+.update-btn-image {
+    display: none;
 }
 
 .cities{
@@ -53,7 +61,7 @@
 
 .btn-plus {
     float: right;
-    height: 4.05vw;
+    height: 4.55vw;
     object-fit: contain;
     background-color: white;
     background-image: url("../images/plus.png");
@@ -70,7 +78,7 @@
 .btn {
     float: right;
     width: 10%;
-    height: 4.05vw;
+    height: 4.55vw;
     object-fit: contain;
     background-color: white;
     background-image: url("../images/cross.png");
@@ -138,41 +146,61 @@ ul {
 }
 
 @media screen and (min-width: 590px) and (max-width: 940px){
-    .update-btn{
-        display: none;
+
+    .main-weather-img{
+        width: 60%;
+    }
+
+    h3{
+        font-size: 1.7em;
+        color: #6E8090;
     }
 
     .add-city {
+        margin-top: 1%;
         display: grid;
-        grid-template-columns: 90% 10%;
+        grid-template-columns: 95% 5%;
         width: 100%;
         font-size: 1em;
     }
 
-    .update-btn-image{
-        background: none;
-        border: none;
-    }
-
-    .weather-header{
-        margin: 2%;
-        display: grid;
-        grid-template-columns: 70% 30% 1fr;
-    }
-
     .main-weather{
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .main-temp{
-        font-size: 3.2em;
-        margin: auto 0 0;
+
+        font-size: 3.6em;
+        margin: auto 10% 0;
         color: #6A7681;
     }
 
     .input-city{
         font-size: 1em;
+    }
+
+    .btn {
+        float: right;
+        width: 10%;
+        height: 6.1vw;
+        object-fit: contain;
+        background-color: white;
+        background-image: url("../images/cross.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: 0;
+    }
+
+    .btn-plus {
+        float: right;
+        height: 5.05vw;
+        object-fit: contain;
+        background-color: white;
+        background-image: url("../images/plus.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: 0;
     }
 }
 
@@ -183,7 +211,7 @@ ul {
 
     .fav-city{
         display: grid;
-        grid-template-columns: 50% 45%;
+        grid-template-columns: 50% 50%;
     }
 
     .add-city{
@@ -209,6 +237,33 @@ ul {
     }
 }
 
+@media screen and (max-width: 940px){
+    .update-btn{
+        display: none;
+    }
+
+    .update-btn-image {
+        margin-right: 20%;
+        display: block;
+        width: 15%;
+        height: 9vw;
+        object-fit: contain;
+        background-color: white;
+        background-image: url("../images/update.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: 0;
+    }
+
+    .weather-header{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+}
+
 
 @media screen and (max-width: 590px) {
     .cities{
@@ -217,36 +272,19 @@ ul {
     }
 
     .main-weather-img {
-        /*float: center;*/
         width: 40%;
-
     }
 
     .add-city{
         display: grid;
-        grid-template-columns: 90% 10%;
+        grid-template-columns: 91% 9%;
         width: 100%;
         font-size: 1em;
-    }
-
-    .weather-header{
-        margin: 2%;
-        display: grid;
-        grid-template-columns: 70% 30% 1fr;
-    }
-
-    .update-btn{
-        display: none;
     }
 
     .input-city{
         width: 90%;
         font-size: 1em;
-    }
-
-    .update-btn-image{
-        background: none;
-        border: none;
     }
 
     .main-weather{
@@ -266,7 +304,7 @@ ul {
     .btn {
         float: right;
         width: 10%;
-        height: 8.1vw;
+        height: 7.1vw;
         object-fit: contain;
         background-color: white;
         background-image: url("../images/cross.png");
@@ -275,8 +313,10 @@ ul {
         border: 0;
     }
 
+
+
     .btn-plus {
-        height: 8.1vw;
+        height: 7.1vw;
         object-fit: contain;
         background-color: white;
         background-image: url("../images/plus.png");
