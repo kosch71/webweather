@@ -149,7 +149,6 @@ ul {
 
     .main-weather-img{
         width: 70%;
-
     }
 
     h3{
@@ -171,7 +170,6 @@ ul {
     }
 
     .main-temp{
-
         font-size: 3.8em;
         margin: auto 20% 0;
         color: #6A7681;
@@ -185,7 +183,7 @@ ul {
         float: right;
         width: 10%;
         height: 6.1vw;
-        object-fit: contain;
+        object-fit: cover;
         background-color: white;
         background-image: url("../images/cross.png");
         background-size: contain;
@@ -196,7 +194,7 @@ ul {
     .btn-plus {
         float: right;
         height: 5.05vw;
-        object-fit: contain;
+        object-fit: cover;
         background-color: white;
         background-image: url("../images/plus.png");
         background-size: contain;
@@ -266,7 +264,7 @@ ul {
         display: block;
         width: 15%;
         height: 9vw;
-        object-fit: contain;
+        object-fit: cover;
         background-color: white;
         background-image: url("../images/update.png");
         background-size: contain;
@@ -318,14 +316,12 @@ ul {
         margin: auto 0 0;
         color: #6A7681;
     }
-}
 
-@media screen and (max-width: 530px){
     .btn {
         float: right;
         width: 10%;
-        height: 7.1vw;
-        object-fit: contain;
+        height: 7.5vw;
+        object-fit: cover;
         background-color: white;
         background-image: url("../images/cross.png");
         background-size: contain;
@@ -333,15 +329,34 @@ ul {
         border: 0;
     }
 
-
-
     .btn-plus {
-        height: 7.1vw;
-        object-fit: contain;
+        margin-right: 15%;
+        float: left;
+        height: 7.5vw;
+        object-fit: cover;
         background-color: white;
         background-image: url("../images/plus.png");
         background-size: contain;
         background-repeat: no-repeat;
         border: 0;
+    }
+
+    .update-btn-image {
+        margin-right: 20%;
+        display: block;
+        width: 15%;
+        height: 7.5vw;
+        object-fit: cover;
+        background-color: white;
+        background-image: url("../images/update.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: 0;
+    }
+}
+
+@media screen and (max-width: 370px){
+    .title{
+        font-size: 1.3em;
     }
 }
