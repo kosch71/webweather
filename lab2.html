@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="css/default.css">
+</head>
+<body>
+<header class="weather-header">
+    <h1 class="title">Погода здесь</h1>
+    <button class="update-btn" type="button" name="renewLocation">Обновить геолокацию</button>
+    <button class="update-btn-image"></button>
+</header>
+<main class="container">
+    <section class="main-info">
+        <div class="main-city">
+            <p class="wait">Подождите, данные загружаются</p>
+        </div>
+        <ul class="info">
+        </ul>
+    </section>
+    <section class="favourite">
+        <div class="fav-city">
+            <h2>Избранное</h2>
+            <form class="add-city">
+
+                <input class="input-city" type="text" placeholder="Добавить новый город">
+
+                <button type="button" name="button" class="btn-plus"></button>
+            </form>
+        </div>
+        <ul class="cities">
+        </ul>
+    </section>
+
+    <template id="main-city">
+        <h3></h3>
+        <div class="main-weather">
+            <img src="" class="main-weather-img">
+            <p class="main-temp"></p>
+        </div>
+
+    </template>
+
+    <template id="info-template">
+            <li class="weather-property">
+                <h4>Ветер</h4>
+                <p></p>
+            </li>
+
+            <li class="weather-property">
+                <h4>Облачность</h4>
+                <p></p>
+            </li>
+
+            <li class="weather-property">
+                <h4>Давление</h4>
+                <p></p>
+            </li>
+
+            <li class="weather-property">
+                <h4>Влажность</h4>
+                <p></p>
+            </li>
+
+            <li class="weather-property">
+                <h4>Координаты</h4>
+                <p></p>
+            </li>
+    </template>
+
+    <template id="city">
+        <li class="">
+            <div class="city-weather">
+                <h3></h3>
+                <button class="btn"></button>
+            </div>
+            <ul class="info">
+                <p class="wait-city">Подождите, данные загружаются</p>
+            </ul>
+        </li>
+    </template>
+
+</main>
+</body>
+<script src="js/script.js"></script>
+</html>

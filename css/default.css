@@ -18,6 +18,58 @@
     margin: 0;
 }
 
+.wait {
+    font-size: 180%;
+}
+
+.wait-city {
+    font-size: 150%;
+}
+
+.update-btn:active,
+.update-btn:focus {
+    outline: none;
+}
+
+.update-btn-image {
+    display: none;
+}
+
+.update-btn-image:active,
+.update-btn-image:focus {
+    outline: none;
+}
+
+.btn-plus:active,
+.btn-plus:focus {
+    outline: none;
+}
+
+.btn {
+    float: right;
+    width: 10%;
+    height: 4.05vw;
+    object-fit: contain;
+    background-color: white;
+    background-image: url("../images/cross.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 0;
+}
+
+.btn:active,
+.btn:focus {
+    outline: none;
+}
+
+.wait {
+    font-size: 180%;
+}
+
+.wait-city {
+    font-size: 150%;
+}
+
 .container{
     margin: 2%;
 }
