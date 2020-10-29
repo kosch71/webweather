@@ -24,7 +24,7 @@ function addListeners() {
             .catch(function () {
                 cityElem.lastElementChild.innerHTML = `<p class="wait-city">О нет, что-то пошло не так</p>`
             });
-        document.querySelector('.add-new-city-input').value = "";
+        document.querySelector('.input-city').value = "";
     });
 
     document.querySelector('.update-btn').addEventListener('click', (event) => {
@@ -107,14 +107,14 @@ function fetchCity(city) {
 function addCity(cityName) {
     cityName = format(cityName);
     elem = cityHtml(cityName)
-    city = document.querySelector('main > .favourite > .fav-city > .cities').appendChild(elem);
+    city = document.querySelector('main > .favourite > .cities').appendChild(elem);
     btn = city.firstElementChild.lastElementChild;
     btn.addEventListener( 'click' , (event) => {
         city = event.currentTarget.parentNode.parentNode;
         cityName = city.getAttribute('class');
         i = 0;
         prevSibling = city;
-        while (prevSibling.previousElementSibling.getAttribute('class') != 'add-city') {
+        while (prevSibling.parentNode.previousElementSibling == "fav-city") {
             prevSibling = prevSibling.previousElementSibling;
             i++;
         }
@@ -179,7 +179,7 @@ function mainCityHtml(name, icon, temp) {
     template = document.querySelector('#main-city');
     template.content.querySelector('h3').textContent = name;
     template.content.querySelector('.main-weather > .main-weather-img').setAttribute('src', `https://openweathermap.org/img/wn/${icon}@2x.png`);
-    template.content.querySelector('main-weather > .main-temp').textContent = temp;
+    template.content.querySelector('.main-weather > .main-temp').textContent = temp;
     return template.content.cloneNode(true);
 }
 
@@ -194,8 +194,8 @@ function info(data) {
 }
 
 function infoHtml(wind, clouds, pressure, humidity, coords) {
-    template = document.querySelector('#info');
-    p = template.content.querySelectorAll('p');
+    template = document.querySelector('#info-template');
+    p = template.content.querySelectorAll('.weather-property > p');
     p[0].textContent = wind;
     p[1].textContent = clouds;
     p[2].textContent = pressure;
