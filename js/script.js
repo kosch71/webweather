@@ -70,6 +70,8 @@ function addMainCity(lat, lon) {
         document.querySelector('main > .main-info > .main-city').appendChild(mainCityHtml(data.name, data.weather[0]['icon'], temp));
         document.querySelector('.info').innerHTML = '';
         document.querySelector('.info').appendChild(info(data));
+        localStorage.removeItem('lon');
+        localStorage.removeItem('lat');
     })
         .catch(function () {
             document.querySelector('main > .main-info > .main-city').innerHTML = `<p class="wait">О нет, что-то пошло не так</p>`
