@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/weather/city', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('content-type', 'application/json; charset=utf-8');
-  request(`${baseURL}?q=${req.query.q}&appid=${apiKey}`, (err, response, body) => {
+  request.get(`${baseURL}?q=${req.query.q}&appid=${apiKey}`, (err, response, body) => {
     return formRes(res, err, body);
   });
 });
@@ -20,7 +20,7 @@ app.get('/weather/city', (req, res) => {
 app.get('/weather/coordinates', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('content-type', 'application/json; charset=utf-8');
-  request(`${baseURL}?lat=${req.query.lat}&lon=${req.query.lon}&appid=${apiKey}`, (err, response, body) => {
+  request.get(`${baseURL}?lat=${req.query.lat}&lon=${req.query.lon}&appid=${apiKey}`, (err, response, body) => {
     return formRes(res, err, body);
   });
 });
@@ -29,7 +29,7 @@ app.get('/favourites', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('content-type', 'application/json; charset=utf-8');
   // console.log(Note.find({city: "London"}))
-  City.find({})
+  City.find()
       .then((items) => {
         results = null;
         console.log(items)
@@ -39,7 +39,7 @@ app.get('/favourites', (req, res) => {
           results.push(item.city)
         }
         res.status(200).send(results);
-      }).catch((err) => (res.status(200).send(err.message)));
+      }).catch((err) => (res.status(500).send(err.message)));
 });
 
 app.post('/favourites', (req, res) => {
@@ -51,7 +51,8 @@ app.post('/favourites', (req, res) => {
     city: body.name
   });
   city.save(city)
-      .then((city) => res.status(201).send(city));
+      .then((city) => res.status(200).send(city))
+      .catch((err) => (res.status(500).send(err.message)));
 });
 
 app.delete('/favourites', (req, res) => {
@@ -64,7 +65,7 @@ app.delete('/favourites', (req, res) => {
     console.log(id);
     ObjectId = require('mongodb').ObjectId;
     details = { '_id': new ObjectId(id) };
-    // console.log(details);
+    console.log(details);
     City.deleteOne(details)
         .then((id) => res.status(200).send(JSON.stringify('Note ' + id + ' deleted!')));
   });
@@ -76,6 +77,14 @@ app.options('*', (req, res) => {
   res.set('Access-Control-Allow-Methods', '*');
   res.setHeader('content-type', 'application/json; charset=utf-8');
   res.send('ok');
+});
+
+process.on('SIGTERM', () => {
+  console.info('SIGTERM signal received.');
+  console.log('Closing http server.');
+  app.listen().close(() => {
+    console.log('Http server closed.');
+  });
 });
 
 function formRes(res, err, ok) {
