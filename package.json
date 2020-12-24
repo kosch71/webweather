@@ -1,13 +1,40 @@
 {
-  "name": "web-weather",
+  "name": "express-mongo",
   "version": "1.0.0",
-  "dependencies": {},
-  "devDependencies": {
-    "body-parser": "^1.19.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run server.js",
+    "test": "mocha test/test-client.js --timeout 10000 --recursive --exit, mocha test/test-server.js --timeout 10000 --recursive --exit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
     "chai": "^4.2.0",
-    "express": "^4.17.1",
-    "mockgoose": "^8.0.4",
-    "mongoose": "^5.10.18",
-    "request": "^2.88.2"
+    "express": "^4.16.4",
+    "mocha": "^5.2.0",
+    "mockgoose": "^7.3.5",
+    "mongoose": "^5.4.1",
+    "supertest": "^3.3.0"
+  },
+  "devDependencies": {
+    "chai-http": "^4.3.0",
+    "factory-girl": "^5.0.4",
+    "fetch-mock": "^9.11.0",
+    "jest": "^26.6.3",
+    "jsdom": "^16.4.0",
+    "mock-geolocation": "^1.0.11",
+    "mock-mongoose-model": "^0.1.4",
+    "mockingoose": "^2.13.2",
+    "mongo-mock": "^4.0.0",
+    "mongodb": "^3.6.3",
+    "nock": "^13.0.5",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2",
+    "sinon": "^2.2.0",
+    "sinon-as-promised": "^4.0.3",
+    "sinon-mongo": "^1.1.0",
+    "sinon-mongoose": "^2.1.1"
   }
 }
