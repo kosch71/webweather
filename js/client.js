@@ -244,10 +244,10 @@ mockFavCities = function(callback_) {
     favCities();
 };
 
-mockAdding = function(city) {
-    addCity(city);
+module.exports = {
+    mockCities: mockCities,
+    mockNewCity: mockNewCity,
+    mockFavCities: mockFavCities
 };
-
-module.exports = {mockCities, mockNewCity, mockFavCities, mockAdding};
 
 

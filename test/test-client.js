@@ -96,4 +96,34 @@ describe('Client part', function () {
         })
     })
 
+    describe('Client testing: Add favourite city', () => {
+
+        beforeEach(() => {
+            window = new JSDOM(htmlmock.mockTemplate).window;
+            global.document = window.document;
+            global.window = window;
+        })
+
+        it('Add city with ok response from server', (done) => {
+            fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
+            fetchMock.post(`${baseURL}/favourites`, {});
+            script.mockNewCity('Tolyatti', () => {
+                expect(document.querySelector('main > .favourite > .cities').lastChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockCityElem);
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+        })
+
+        it('Add city with error response from server', (done) => {
+            fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
+            fetchMock.post(`${baseURL}/favourites`, 500);
+            script.mockNewCity('Tolyatti', () => {
+                expect(document.querySelector('main > .favourite > .cities').lastChild.lastElementChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorCity);
+                fetchMock.restore();
+                done();
+            });
+        })
+    })
+
 });
