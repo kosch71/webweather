@@ -11,16 +11,12 @@ require('sinon-mongo');
 const app = require('../js/app.js');
 const conn = require('../db');
 const City = require('../db/models/city.js').City;
-
-
-
 chai.use(chaiHttp);
 
-const urlMongo = 'mongodb+srv://kosch71:Kostya190@cluster0.b4stj.mongodb.net/koch71?retryWrites=true&w=majority';
 const apiKey = '315bdb45e49dcae9a4a9512b11a04583';
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 
-describe('SERVER: DELETE /favourites', () => {
+describe('Server testing: DELETE /favourites', () => {
     before((done) => {
         conn.connect()
             .then(() => done())
@@ -54,7 +50,7 @@ describe('SERVER: DELETE /favourites', () => {
 
 })
 
-describe('SERVER: GET /favourites', () => {
+describe('Server testing: GET /favourites', () => {
     before((done) => {
         conn.connect()
             .then(() => done())
@@ -99,7 +95,7 @@ describe('SERVER: GET /favourites', () => {
     })
 })
 
-describe('SERVER: POST /favourites', () => {
+describe('Server testing: POST /favourites', () => {
     before((done) => {
         conn.connect()
             .then(() => done())
@@ -214,7 +210,7 @@ describe('Server testing: GET /weather/city', () => {
     })
 })
 
-describe('SERVER: GET /weather/coordinates', () => {
+describe('Server testing: GET /weather/coordinates', () => {
     before((done) => {
         conn.connect()
             .then(() => done())
