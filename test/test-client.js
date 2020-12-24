@@ -13,7 +13,6 @@ const geolocate = require('mock-geolocation');
 geolocate.use();
 const fetchMock = require('fetch-mock');
 const expect = require('chai').expect;
-const sinon = require("sinon");
 const script = require('../js/client');
 
 const app = require('../js/app.js');
