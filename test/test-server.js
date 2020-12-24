@@ -229,8 +229,8 @@ describe('Server testing: GET /weather/coordinates', () => {
 
         const responseBody = {
             "coord": {
-                "lon": 37.62,
-                "lat": 55.75
+                "lon": 45.78,
+                "lat": 23.75
             },
             "weather": [
                 {
@@ -242,17 +242,14 @@ describe('Server testing: GET /weather/coordinates', () => {
             ]
         };
 
-        lon = 37.62;
-        lat = 55.75;
-
         requestMock = sinon.mock(request);
         requestMock.expects("get")
             .once()
-            .withArgs(`${baseURL}?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+            .withArgs(`${baseURL}?lat=${'23.75'}&lon=${'45.78'}&appid=${apiKey}`)
             .yields(null, responseObject, JSON.stringify(responseBody));
 
         chai.request(app)
-            .get(`/weather/coordinates?lat=${lat}&lon=${lon}`)
+            .get(`/weather/coordinates?lat=${'23.75'}&lon=${'45.78'}`)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.eql(responseBody);
@@ -263,17 +260,14 @@ describe('Server testing: GET /weather/coordinates', () => {
     })
 
     it('error response from weather server', (done) => {
-        lon = '37.62';
-        lat = '55.75';
-
         requestMock = sinon.mock(request);
         requestMock.expects("get")
             .once()
-            .withArgs(`${baseURL}?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+            .withArgs(`${baseURL}?lat=${'23.75'}&lon=${'45.78'}&appid=${apiKey}`)
             .yields(new Error(), null, null);
 
         chai.request(app)
-            .get(`/weather/coordinates?lat=${lat}&lon=${lon}`)
+            .get(`/weather/coordinates?lat=${'23.75'}&lon=${'45.78'}`)
             .end((err, res) => {
                 res.should.have.status(500);
                 requestMock.verify();
