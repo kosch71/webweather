@@ -126,4 +126,46 @@ describe('Client part', function () {
         })
     })
 
+    describe('Client testing: Get favourites cities', () => {
+
+        afterEach(() => {
+            window = new JSDOM(htmlmock.mockTemplate).window;
+            global.document = window.document;
+            global.window = window;
+        })
+
+        it('Get cities ok response from server', (done) => {
+            fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
+            fetchMock.get(`${baseURL}/favourites`, ['Tolyatti']);
+            script.mockFavCities(() => {
+                expect(document.querySelector('main > .favourite > .cities').lastChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockCityElem);
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+        })
+
+        it('Get cities with error response from server', (done) => {
+            fetchMock.get(`${baseURL}/favourites`, 500);
+            script.mockFavCities(() => {
+                expect(document.documentElement.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockTemplate.replace(/\s+/g, ' '));
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+        })
+
+        it('Get cities with bad network', (done) => {
+            fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, 500);
+            fetchMock.get(`${baseURL}/favourites`, ['Tolyatti']);
+            script.mockFavCities(() => {
+                expect(document.querySelector('main > .favourite > .cities').lastChild.lastElementChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorCity);
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+        })
+
+    })
+
 });
