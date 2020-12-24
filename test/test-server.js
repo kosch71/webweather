@@ -15,7 +15,7 @@ chai.use(chaiHttp);
 
 const apiKey = '315bdb45e49dcae9a4a9512b11a04583';
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
-
+describe('Server part', () =>{
 describe('Server testing: DELETE /favourites', () => {
     before((done) => {
         conn.connect()
@@ -281,6 +281,7 @@ describe('Server testing: GET /weather/coordinates', () => {
                 done();
             });
     })
+})
 })
 
 
