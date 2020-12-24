@@ -1,0 +1,99 @@
+var jsdom = require("jsdom");
+var JSDOM = jsdom.JSDOM;
+const htmlmock = require("../db/models/mock")
+window = new JSDOM(htmlmock.mockTemplate).window;
+global.document = window.document;
+global.window = window;
+global.localStorage = htmlmock.mocking();
+global.fetch = require("node-fetch");
+global.navigator = {
+    userAgent: 'node.js'
+};
+const geolocate = require('mock-geolocation');
+geolocate.use();
+const fetchMock = require('fetch-mock');
+const expect = require('chai').expect;
+const sinon = require("sinon");
+const script = require('../js/client');
+
+const app = require('../js/app.js');
+const conn = require('../db');
+const PORT = process.env.PORT || 7000;
+
+describe('Client part', function () {
+    before((done) => {
+        process.env.NODE_ENV = 'test';
+        conn.connect()
+            .then(() => {
+                app.listen(PORT)
+                done()
+            })
+            .catch((err) => done(err));
+    })
+    app
+
+    after((done) => {
+        conn.close()
+            .then(() => {
+                app.delete;
+                done()
+            })
+            .catch((err) => done(err));
+    })
+
+    describe('Client testing: Load main city', () => {
+
+
+        it('Load existed main city from local storage', (done) => {
+            localStorage.setItem('lat', 25);
+            localStorage.setItem('lon', 50);
+            fetchMock.get(`${baseURL}/weather/coordinates?lat=25&lon=50`, htmlmock.mockCity);
+            script.mockCities(() => {
+                expect(document.querySelector('main > .main-info > .main-city').innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockMainInfoSection);
+                expect(document.querySelector('.info').innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockInfoTemplate)
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+        })
+
+        it('Load main city by position', (done) => {
+            localStorage.clear();
+            fetchMock.get(`${baseURL}/weather/coordinates?lat=1&lon=2`, htmlmock.mockCity);
+            script.mockCities(() => {
+                expect(document.querySelector('main > .main-info > .main-city').innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockMainInfoSection);
+                expect(document.querySelector('.info').innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockInfoTemplate);
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+            geolocate.send({latitude: 1, longitude: 2});
+        })
+
+        it('Load default main city', (done) => {
+            localStorage.clear();
+            fetchMock.get(`${baseURL}/weather/coordinates?lat=59.894444&lon=30.264168`, htmlmock.mockCity);
+            script.mockCities(() => {
+                expect(document.querySelector('main > .main-info > .main-city').innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockMainInfoSection);
+                expect(document.querySelector('.info').innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockInfoTemplate)
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+            geolocate.sendError({code: 1, message: "DENIED"});
+        })
+
+        it('Load main city with error', (done) => {
+            localStorage.setItem('lat', 14);
+            localStorage.setItem('lon', 48);
+            fetchMock.get(`${baseURL}/weather/coordinates?lat=14&lon=48`, 500);
+            script.mockCities(() => {
+                expect(document.querySelector('main > .main-info > .main-city').innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorElem);
+                fetchMock.done();
+                fetchMock.restore();
+                done();
+            });
+        })
+    })
+
+});
