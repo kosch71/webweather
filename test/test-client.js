@@ -48,7 +48,7 @@ describe('Client part', function () {
             global.window = window;
         })
 
-        it('Add city 200 (ok) response from server', (done) => {
+        it('Add city 200 (ok) response', (done) => {
             fetchMock.post(`${baseURL}/favourites`, {});
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
             client.mockNewCity('Tolyatti', () => {
@@ -60,7 +60,7 @@ describe('Client part', function () {
             });
         })
 
-        it('Add city 500 (error) response from server', (done) => {
+        it('Add city 500 (error) response', (done) => {
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
             fetchMock.post(`${baseURL}/favourites`, 500);
             client.mockNewCity('Tolyatti', () => {
@@ -77,21 +77,6 @@ describe('Client part', function () {
 
         beforeEach(() => {
             localStorage.clear();
-        })
-
-        it('Load existed main city from storage', (done) => {
-            fetchMock.get(`${baseURL}/weather/coordinates?lat=25&lon=50`, htmlmock.mockCity);
-            localStorage.setItem('lat', 25);
-            localStorage.setItem('lon', 50);
-            client.mockCities(() => {
-                expect(document.querySelector('main > .main-info > .main-city')
-                    .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockMainInfoSection);
-                expect(document.querySelector('.info')
-                    .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockInfoTemplate)
-                fetchMock.done();
-                fetchMock.restore();
-                done();
-            });
         })
 
         it('Load main city by position', (done) => {
