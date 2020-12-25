@@ -9,8 +9,8 @@ global.fetch = require("node-fetch");
 global.navigator = {
     userAgent: 'node.js'
 };
-const geolocate = require('mock-geolocation');
-geolocate.use();
+const geolocation = require('mock-geolocation');
+geolocation.use();
 const fetchMock = require('fetch-mock');
 const expect = require('chai').expect;
 const client = require('../js/client');
@@ -75,10 +75,6 @@ describe('Client part', function () {
 
     describe('Client testing: Load main city', () => {
 
-        beforeEach(() => {
-            localStorage.clear();
-        })
-
         it('Load default main city', (done) => {
             fetchMock.get(`${baseURL}/weather/coordinates?lat=59.894444&lon=30.264168`, htmlmock.mockCity);
             client.mockCities(() => {
@@ -89,7 +85,7 @@ describe('Client part', function () {
                 fetchMock.restore();
                 done();
             });
-            geolocate.sendError({code: 1, message: "DENIED"});
+            geolocation.sendError({code: 1, message: "DENIED"});
         })
 
         it('Load main city by position', (done) => {
@@ -102,7 +98,7 @@ describe('Client part', function () {
                 fetchMock.restore();
                 done();
             });
-            geolocate.send({latitude: 60, longitude: 60});
+            geolocation.send({latitude: 60, longitude: 60});
         })
 
         it('Load main city with error', (done) => {
