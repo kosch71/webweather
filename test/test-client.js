@@ -101,18 +101,6 @@ describe('Client part', function () {
             geolocation.send({latitude: 60, longitude: 60});
         })
 
-        it('Load main city with error', (done) => {
-            fetchMock.get(`${baseURL}/weather/coordinates?lat=60&lon=60`, 500);
-            localStorage.setItem('lat', 60);
-            localStorage.setItem('lon', 60);
-            client.mockCities(() => {
-                expect(document.querySelector('main > .main-info > .main-city')
-                    .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorElem);
-                fetchMock.done();
-                fetchMock.restore();
-                done();
-            });
-        })
     })
 
     describe('Client testing: Get favourites cities', () => {
