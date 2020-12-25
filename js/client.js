@@ -1,5 +1,4 @@
 baseURL = 'http://localhost:7000';
-var callback = null;
 
 listeners();
 cities();
@@ -212,35 +211,35 @@ function wind(deg) {
 function format(str) {
     return (!str) ? str : str.replace(/\s/g, '')[0].toUpperCase() + str.replace(/\s/g, '').slice(1);
 }
-
-//Exec callback
+var cbFunc = null;
+//Exec cbFunc
 function exec() {
-    if (callback == null) {
+    if (cbFunc == null) {
         return;
     } else {
         try {
-            callback();
-            callback = null;
+            cbFunc();
+            cbFunc = null;
         } catch(err) {
             console.log(err);
-            callback = null;
+            cbFunc = null;
         }
     }
 };
 
 //Exporting methods
 mockCities = function(mockCallback) {
-    callback = mockCallback;
+    cbFunc = mockCallback;
     cities();
 };
 
 mockNewCity = function(city, mockCallback) {
-    callback = mockCallback;
+    cbFunc = mockCallback;
     addNewCity(city);
 };
 
 mockFavCities = function(mockCallback) {
-    callback = mockCallback;
+    cbFunc = mockCallback;
     favCities();
 };
 
