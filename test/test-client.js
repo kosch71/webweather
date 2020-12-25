@@ -52,7 +52,8 @@ describe('Client part', function () {
             fetchMock.post(`${baseURL}/favourites`, {});
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
             script.mockNewCity('Tolyatti', () => {
-                expect(document.querySelector('main > .favourite > .cities').lastChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockCityElem);
+                expect(document.querySelector('main > .favourite > .cities')
+                    .lastChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockCityElem);
                 fetchMock.done();
                 fetchMock.restore();
                 done();
@@ -63,7 +64,9 @@ describe('Client part', function () {
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
             fetchMock.post(`${baseURL}/favourites`, 500);
             script.mockNewCity('Tolyatti', () => {
-                expect(document.querySelector('main > .favourite > .cities').lastChild.lastElementChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorCity);
+                expect(document.querySelector('main > .favourite > .cities')
+                    .lastChild.lastElementChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorCity);
+                fetchMock.done();
                 fetchMock.restore();
                 done();
             });
