@@ -81,7 +81,6 @@ describe('Server testing: GET /favourites', () => {
     })
 
     it('500 (error) response', (done) => {
-        mockCity = sinon.mock(City);
         sinon.mock(City)
             .expects('find')
             .chain('exec')
@@ -173,7 +172,6 @@ describe('Server testing: GET /weather/city', () => {
 
     it('500(error) response', (done) => {
         const city = 'Paris'
-
         const mock = sinon.mock(request);
         mock.expects("get")
             .once()
