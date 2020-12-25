@@ -13,7 +13,7 @@ const geolocate = require('mock-geolocation');
 geolocate.use();
 const fetchMock = require('fetch-mock');
 const expect = require('chai').expect;
-const script = require('../js/client');
+const client = require('../js/client');
 
 const app = require('../js/app.js');
 const conn = require('../db');
@@ -51,7 +51,7 @@ describe('Client part', function () {
         it('Add city 200 (ok) response from server', (done) => {
             fetchMock.post(`${baseURL}/favourites`, {});
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
-            script.mockNewCity('Tolyatti', () => {
+            client.mockNewCity('Tolyatti', () => {
                 expect(document.querySelector('main > .favourite > .cities')
                     .lastChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockCityElem);
                 fetchMock.done();
@@ -63,7 +63,7 @@ describe('Client part', function () {
         it('Add city 500 (error) response from server', (done) => {
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
             fetchMock.post(`${baseURL}/favourites`, 500);
-            script.mockNewCity('Tolyatti', () => {
+            client.mockNewCity('Tolyatti', () => {
                 expect(document.querySelector('main > .favourite > .cities')
                     .lastChild.lastElementChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorCity);
                 fetchMock.done();
@@ -83,7 +83,7 @@ describe('Client part', function () {
             fetchMock.get(`${baseURL}/weather/coordinates?lat=25&lon=50`, htmlmock.mockCity);
             localStorage.setItem('lat', 25);
             localStorage.setItem('lon', 50);
-            script.mockCities(() => {
+            client.mockCities(() => {
                 expect(document.querySelector('main > .main-info > .main-city')
                     .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockMainInfoSection);
                 expect(document.querySelector('.info')
@@ -95,8 +95,8 @@ describe('Client part', function () {
         })
 
         it('Load main city by position', (done) => {
-            fetchMock.get(`${baseURL}/weather/coordinates?lat=1&lon=2`, htmlmock.mockCity);
-            script.mockCities(() => {
+            fetchMock.get(`${baseURL}/weather/coordinates?lat=60&lon=60`, htmlmock.mockCity);
+            client.mockCities(() => {
                 expect(document.querySelector('main > .main-info > .main-city')
                     .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockMainInfoSection);
                 expect(document.querySelector('.info')
@@ -105,14 +105,14 @@ describe('Client part', function () {
                 fetchMock.restore();
                 done();
             });
-            geolocate.send({latitude: 1, longitude: 2});
+            geolocate.send({latitude: 60, longitude: 60});
         })
 
         it('Load main city with error', (done) => {
             fetchMock.get(`${baseURL}/weather/coordinates?lat=14&lon=48`, 500);
             localStorage.setItem('lat', 14);
             localStorage.setItem('lon', 48);
-            script.mockCities(() => {
+            client.mockCities(() => {
                 expect(document.querySelector('main > .main-info > .main-city')
                     .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorElem);
                 fetchMock.done();
@@ -130,10 +130,10 @@ describe('Client part', function () {
             global.window = window;
         })
 
-        it('Get 200 (ok) response from server', (done) => {
+        it('Get 200 (ok) response', (done) => {
             fetchMock.get(`${baseURL}/favourites`, ['Tolyatti']);
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
-            script.mockFavCities(() => {
+            client.mockFavCities(() => {
                 expect(document.querySelector('main > .favourite > .cities').lastChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockCityElem);
                 fetchMock.done();
                 fetchMock.restore();
@@ -141,21 +141,10 @@ describe('Client part', function () {
             });
         })
 
-        it('Get 500 (error) response from server', (done) => {
+        it('Get 500 (error) response', (done) => {
             fetchMock.get(`${baseURL}/favourites`, 500);
-            script.mockFavCities(() => {
+            client.mockFavCities(() => {
                 expect(document.documentElement.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockTemplate.replace(/\s+/g, ' '));
-                fetchMock.done();
-                fetchMock.restore();
-                done();
-            });
-        })
-
-        it('Get 500 (error) bad network', (done) => {
-            fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, 500);
-            fetchMock.get(`${baseURL}/favourites`, ['Tolyatti']);
-            script.mockFavCities(() => {
-                expect(document.querySelector('main > .favourite > .cities').lastChild.lastElementChild.innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorCity);
                 fetchMock.done();
                 fetchMock.restore();
                 done();
