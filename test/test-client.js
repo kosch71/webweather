@@ -85,7 +85,7 @@ describe('Client part', function () {
                 fetchMock.restore();
                 done();
             });
-            geolocation.sendError({code: 1, message: "DENIED"});
+            geolocation.sendError({code: 500, message: "DENIED"});
         })
 
         it('Load main city by position', (done) => {
