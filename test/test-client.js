@@ -48,7 +48,7 @@ describe('Client part', function () {
             global.window = window;
         })
 
-        it('Add city with ok response from server', (done) => {
+        it('Add city 200 (ok) response from server', (done) => {
             fetchMock.post(`${baseURL}/favourites`, {});
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
             script.mockNewCity('Tolyatti', () => {
@@ -59,7 +59,7 @@ describe('Client part', function () {
             });
         })
 
-        it('Add city with error response from server', (done) => {
+        it('Add city 500 (error) response from server', (done) => {
             fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
             fetchMock.post(`${baseURL}/favourites`, 500);
             script.mockNewCity('Tolyatti', () => {
