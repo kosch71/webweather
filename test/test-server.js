@@ -81,7 +81,7 @@ describe('Server testing: GET /favourites', () => {
     })
 
     it('500 (error) response', (done) => {
-        mockCollection = sinon.mock(City);
+        mockCity = sinon.mock(City);
         sinon.mock(City)
             .expects('find')
             .chain('exec')
@@ -90,7 +90,6 @@ describe('Server testing: GET /favourites', () => {
             .get('/favourites')
             .end((err, res) => {
                 res.should.have.status(500);
-
                 done();
             });
     })
