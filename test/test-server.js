@@ -63,7 +63,7 @@ describe('Server testing: GET /favourites', () => {
             .catch((err) => done(err));
     })
 
-    it('ok response from weather database', (done) => {
+    it('200 (ok) response', (done) => {
 
         const city = new City({
             city: "Paris"
@@ -79,7 +79,7 @@ describe('Server testing: GET /favourites', () => {
             });
     })
 
-    it('error response from weather database', (done) => {
+    it('500 (error) response', (done) => {
         mockCollection = sinon.mock(City);
         sinon.mock(City)
             .expects('find')
@@ -108,7 +108,7 @@ describe('Server testing: POST /favourites', () => {
             .catch((err) => done(err));
     })
 
-    it('ok response from weather database', (done) => {
+    it('200 (ok) response', (done) => {
 
         chai.request(app)
             .post('/favourites')
@@ -120,7 +120,7 @@ describe('Server testing: POST /favourites', () => {
             });
     })
 
-    it('error response from weather database', (done) => {
+    it('500 (error) response', (done) => {
 
         Object.defineProperty(City.prototype, 'save', {
             value: City.prototype.save,
@@ -222,7 +222,7 @@ describe('Server testing: GET /weather/coordinates', () => {
             .then(() => done())
             .catch((err) => done(err));
     })
-    it('ok response from weather server', (done) => {
+    it('200 (ok) response', (done) => {
         const responseObject = {
             statusCode: 200,
         };
@@ -259,7 +259,7 @@ describe('Server testing: GET /weather/coordinates', () => {
             });
     })
 
-    it('error response from weather server', (done) => {
+    it('500 (error) response', (done) => {
         requestMock = sinon.mock(request);
         requestMock.expects("get")
             .once()
