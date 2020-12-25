@@ -7,6 +7,7 @@ const request = require('request');
 const sinon = require('sinon');
 require('sinon-mongoose');
 require('sinon-mongo');
+const mock = require("../db/models/mock")
 // require('sinon-as-promised');
 const app = require('../js/app.js');
 const conn = require('../db');
@@ -153,39 +154,18 @@ describe('Server testing: GET /weather/city', () => {
             .catch((err) => done(err));
     })
     it('200(ok) response', (done) => {
-        const responseObject = {
-            statusCode: 200,
-        };
-
-        const responseBody = {
-            "coord": {
-                "lon": 37.62,
-                "lat": 55.75
-            },
-            "weather": [
-                {
-                    "id": 800,
-                    "main": "Clear",
-                    "description": "clear sky",
-                    "icon": "01d"
-                }
-            ]
-        };
-
-        city = 'Moscow'
-
         requestMock = sinon.mock(request);
         requestMock.expects("get")
             .once()
-            .withArgs(`${baseURL}?q=${city}&appid=${apiKey}`)
-            .yields(null, responseObject, JSON.stringify(responseBody));
+            .withArgs(`${baseURL}?q=Paris&appid=${apiKey}`)
+            .yields(null, mock.rspObj, JSON.stringify(mock.rspBody));
 
         chai.request(app)
-            .get('/weather/city?q=' + city)
+            .get('/weather/city?q=Paris')
             .end((err, res) => {
                 console.log(res.body)
                 res.should.have.status(200);
-                res.body.should.eql(responseBody);
+                res.body.should.eql(mock.rspBody);
                 requestMock.verify();
                 requestMock.restore();
                 done();
@@ -193,7 +173,7 @@ describe('Server testing: GET /weather/city', () => {
     })
 
     it('500(error) response', (done) => {
-        const city = 'Moscow'
+        const city = 'Paris'
 
         const mock = sinon.mock(request);
         mock.expects("get")
@@ -223,36 +203,17 @@ describe('Server testing: GET /weather/coordinates', () => {
             .catch((err) => done(err));
     })
     it('200 (ok) response', (done) => {
-        const responseObject = {
-            statusCode: 200,
-        };
-
-        const responseBody = {
-            "coord": {
-                "lon": 45.78,
-                "lat": 23.75
-            },
-            "weather": [
-                {
-                    "id": 800,
-                    "main": "Clear",
-                    "description": "clear sky",
-                    "icon": "01d"
-                }
-            ]
-        };
-
         requestMock = sinon.mock(request);
         requestMock.expects("get")
             .once()
             .withArgs(`${baseURL}?lat=${'23.75'}&lon=${'45.78'}&appid=${apiKey}`)
-            .yields(null, responseObject, JSON.stringify(responseBody));
+            .yields(null, mock.rspObj, JSON.stringify(mock.rspBody));
 
         chai.request(app)
             .get(`/weather/coordinates?lat=${'23.75'}&lon=${'45.78'}`)
             .end((err, res) => {
                 res.should.have.status(200);
-                res.body.should.eql(responseBody);
+                res.body.should.eql(mock.rspBody);
                 requestMock.verify();
                 requestMock.restore();
                 done();

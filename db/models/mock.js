@@ -159,6 +159,25 @@ function mocking() {
     };
 };
 
+rspBody = {
+    "coord": {
+        "lon": 45.78,
+        "lat": 23.75
+    },
+    "weather": [
+        {
+            "id": 700,
+            "main": "Rain",
+            "description": "rain",
+            "icon": "10n"
+        }
+    ]
+};
+
+rspObj = {
+    statusCode: 200
+};
+
 module.exports = {mockCity: mockCity,
     mockMainInfoSection: mockMainInfoSection,
     mockInfoTemplate: mockInfoTemplate,
@@ -167,4 +186,6 @@ module.exports = {mockCity: mockCity,
     mockErrorCity: mockErrorCity,
     mockBadNetwork: mockBadNetwork,
     mockTemplate: mockTemplate,
+    rspBody: rspBody,
+    rspObj: rspObj,
     mocking: mocking}
