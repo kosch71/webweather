@@ -61,7 +61,7 @@ describe('Client part', function () {
         })
 
         it('Add city 500 (error) response', (done) => {
-            fetchMock.get(`${baseURL}/weather/city?q=${'Tolyatti'}`, htmlmock.mockCity);
+            fetchMock.get(`${baseURL}/weather/city?q=Tolyatti`, htmlmock.mockCity);
             fetchMock.post(`${baseURL}/favourites`, 500);
             client.mockNewCity('Tolyatti', () => {
                 expect(document.querySelector('main > .favourite > .cities')
