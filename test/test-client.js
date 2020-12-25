@@ -79,24 +79,25 @@ describe('Client part', function () {
             localStorage.clear();
         })
 
-        it('Load main city by position', (done) => {
+        it('Load existed main city from storage', (done) => {
             fetchMock.get(`${baseURL}/weather/coordinates?lat=60&lon=60`, htmlmock.mockCity);
+            localStorage.setItem('lat', 60);
+            localStorage.setItem('lon', 60);
             client.mockCities(() => {
                 expect(document.querySelector('main > .main-info > .main-city')
                     .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockMainInfoSection);
                 expect(document.querySelector('.info')
-                    .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockInfoTemplate);
+                    .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockInfoTemplate)
                 fetchMock.done();
                 fetchMock.restore();
                 done();
             });
-            geolocate.send({latitude: 60, longitude: 60});
         })
 
         it('Load main city with error', (done) => {
-            fetchMock.get(`${baseURL}/weather/coordinates?lat=14&lon=48`, 500);
-            localStorage.setItem('lat', 14);
-            localStorage.setItem('lon', 48);
+            fetchMock.get(`${baseURL}/weather/coordinates?lat=60&lon=60`, 500);
+            localStorage.setItem('lat', 60);
+            localStorage.setItem('lon', 60);
             client.mockCities(() => {
                 expect(document.querySelector('main > .main-info > .main-city')
                     .innerHTML.replace(/\s+/g, ' ')).to.equal(htmlmock.mockErrorElem);
