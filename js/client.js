@@ -229,18 +229,18 @@ function exec() {
 };
 
 //Exporting methods
-mockCities = function(callback_) {
-    callback = callback_;
+mockCities = function(mockCallback) {
+    callback = mockCallback;
     cities();
 };
 
-mockNewCity = function(city, callback_) {
-    callback = callback_;
+mockNewCity = function(city, mockCallback) {
+    callback = mockCallback;
     addNewCity(city);
 };
 
-mockFavCities = function(callback_) {
-    callback = callback_;
+mockFavCities = function(mockCallback) {
+    callback = mockCallback;
     favCities();
 };
 
