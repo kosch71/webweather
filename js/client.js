@@ -228,18 +228,18 @@ function exec() {
 };
 
 //Exporting methods
-mockCities = function(mockCallback) {
-    cbFunc = mockCallback;
+mockCities = function(testExecute) {
+    cbFunc = testExecute;
     cities();
 };
 
-mockNewCity = function(city, mockCallback) {
-    cbFunc = mockCallback;
+mockNewCity = function(city, testExecute) {
+    cbFunc = testExecute;
     addNewCity(city);
 };
 
-mockFavCities = function(mockCallback) {
-    cbFunc = mockCallback;
+mockFavCities = function(testExecute) {
+    cbFunc = testExecute;
     favCities();
 };
 
