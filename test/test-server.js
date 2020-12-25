@@ -153,8 +153,8 @@ describe('Server testing: GET /weather/city', () => {
             .catch((err) => done(err));
     })
     it('200(ok) response', (done) => {
-        requestMock = sinon.mock(request);
-        requestMock.expects("get")
+        const mock = sinon.mock(request);
+        mock.expects("get")
             .once()
             .withArgs(`${baseURL}?q=Paris&appid=${apiKey}`)
             .yields(null, mock.rspObj, JSON.stringify(mock.rspBody));
@@ -202,8 +202,8 @@ describe('Server testing: GET /weather/coordinates', () => {
             .catch((err) => done(err));
     })
     it('200 (ok) response', (done) => {
-        requestMock = sinon.mock(request);
-        requestMock.expects("get")
+        const mock = sinon.mock(request);
+        mock.expects("get")
             .once()
             .withArgs(`${baseURL}?lat=${'23.75'}&lon=${'45.78'}&appid=${apiKey}`)
             .yields(null, mock.rspObj, JSON.stringify(mock.rspBody));
@@ -220,8 +220,8 @@ describe('Server testing: GET /weather/coordinates', () => {
     })
 
     it('500 (error) response', (done) => {
-        requestMock = sinon.mock(request);
-        requestMock.expects("get")
+        const mock = sinon.mock(request);
+        mock.expects("get")
             .once()
             .withArgs(`${baseURL}?lat=${'23.75'}&lon=${'45.78'}&appid=${apiKey}`)
             .yields(new Error(), null, null);
