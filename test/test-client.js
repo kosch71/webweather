@@ -85,7 +85,7 @@ describe('Client part', function () {
                 fetchMock.restore();
                 done();
             });
-            geolocation.sendError({code: 500, message: "DENIED"});
+            geolocation.sendError({code: 500, message: "Geolocation access is denied"});
         })
 
         it('Load main city by position', (done) => {
