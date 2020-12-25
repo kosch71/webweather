@@ -85,15 +85,15 @@ mockCity = {
     base: "stations",
     clouds: {all: 33},
     cod: 200,
-    coord: {lon: 14, lat: 48},
-    main: {temp: 257.15, feels_like: 252.98, temp_min: 257.15, temp_max: 257.15, pressure: 981, humidity: 75},
+    coord: {lon: 60, lat: 60},
+    main: {temp: 257.15, feels_like: 252.98, temp_min: 257.15, temp_max: 257.15, pressure: 981, humidity: 99},
     name: "Tolyatti",
     weather: [{
         description: "rain",
         icon: "10n",
         id: 701,
         main: "Rain"}],
-    wind: {speed: 1, deg: 350}
+    wind: {speed: 7, deg: 270}
 };
 
 mockMainInfoSection = `
@@ -105,11 +105,11 @@ mockMainInfoSection = `
 	`.replace(/\s+/g,' ');
 
 mockInfoTemplate = `
-		<li class="weather-property"> <h4>Ветер</h4> <p>1 m/s, North</p> </li> 
+		<li class="weather-property"> <h4>Ветер</h4> <p>7 m/s, West</p> </li> 
 		<li class="weather-property"> <h4>Облачность</h4> <p>33 %</p> </li> 
 		<li class="weather-property"> <h4>Давление</h4> <p>981 hpa</p> </li>       	 
-		<li class="weather-property"> <h4>Влажность</h4> <p>75 %</p> </li> 
-		<li class="weather-property"> <h4>Координаты</h4> <p>[14 48]</p> </li>
+		<li class="weather-property"> <h4>Влажность</h4> <p>99 %</p> </li> 
+		<li class="weather-property"> <h4>Координаты</h4> <p>[60 60]</p> </li>
 	`.replace(/\s+/g,' ');
 
 mockCityElem = `
@@ -120,11 +120,11 @@ mockCityElem = `
 		<button class="btn"></button>
 		</div>
 		<ul class="info">
-		<li class="weather-property"> <h4>Ветер</h4> <p>1 m/s, North</p> </li> 
+		<li class="weather-property"> <h4>Ветер</h4> <p>7 m/s, West</p> </li> 
 		<li class="weather-property"> <h4>Облачность</h4> <p>33 %</p> </li> 
 		<li class="weather-property"> <h4>Давление</h4> <p>981 hpa</p> </li>       	 
-		<li class="weather-property"> <h4>Влажность</h4> <p>75 %</p> </li> 
-		<li class="weather-property"> <h4>Координаты</h4> <p>[14 48]</p> </li>
+		<li class="weather-property"> <h4>Влажность</h4> <p>99 %</p> </li> 
+		<li class="weather-property"> <h4>Координаты</h4> <p>[60 60]</p> </li>
         </ul> `.replace(/\s+/g,' ')
 
 mockErrorElem = `<p class="wait">Что-то пошло не так</p>`.replace(/\s+/g,' ');
